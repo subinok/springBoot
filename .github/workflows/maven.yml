@@ -61,6 +61,9 @@ jobs:
       uses: actions/download-artifact@v3
       with:
         name: app-jar
+
+    - name: Move JAR file to target
+      run: mkdir -p target && mv *.jar target/
     
     - name: Setup Docker buildx
       uses: docker/setup-buildx-action@79abd3f86f79a9d68a23c75a09a9a85889262adf
