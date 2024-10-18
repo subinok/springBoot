@@ -1,0 +1,29 @@
+<style>
+    table, th, td {
+        border: 1px solid black;
+    }
+</style>
+
+<table class="table" style="width:50%">
+    <thead>
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Title</th>
+        <th scope="col">Content</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#article}}
+        <tr>
+            <th>{{id}}</th>
+            <td>{{title}}</td>
+            <td>{{content}}</td>
+        </tr>
+    {{/article}}
+    </tbody>
+</table>
+<a href="/articles/{{article.id}}/edit" class="btn btn-primary">Edit</a>
+<a href="/articles">Go to Article List</a>
+<!-- 삭제 링크 추가 -->
+<a href="/articles/{{article.id}}/delete" class="btn btn-danger">Delete</a>
+<a href="/articles">Go to Article List</a>
