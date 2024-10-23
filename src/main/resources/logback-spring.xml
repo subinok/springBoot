@@ -1,0 +1,29 @@
+<configuration>
+
+    <!-- 콘솔에 로그 출력 -->
+    <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 파일에 로그 저장 -->
+    <appender name="FileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- file 태그를 제거하고 fileNamePattern으로만 롤링 파일 생성 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- 1분마다 새로운 로그 파일 생성 -->
+            <fileNamePattern>/var/log/edu/%d{yyyy-MM-dd-HH-mm}.log</fileNamePattern>
+            <maxHistory>1440</maxHistory> <!-- 최대 1일 동안 로그 파일 보관 (1440분 = 24시간) -->
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- root 로거 설정: INFO 레벨의 로그를 Console과 FileAppender에 출력 -->
+    <root level="INFO">
+        <appender-ref ref="Console" />
+        <appender-ref ref="FileAppender" />
+    </root>
+
+</configuration>
